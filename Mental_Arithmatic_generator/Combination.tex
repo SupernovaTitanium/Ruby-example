@@ -1,0 +1,202 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{floatrow}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabu,tabularx}
+\setlength{\extrarowheight}{19.5pt}
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.25in
+\hoffset=-0.3in
+\voffset=-0.25in
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkClass} % Top left header
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{Perl} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Perl, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.pl}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Random Arithmetic Question Generator} % Assignment title
+\newcommand{\hmwkDueDate}{\date} % Due date
+\newcommand{\hmwkClass}{Mental Arithmetic} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+
+
+%----------------------------------------------------------------------------------------
+\title{Mental Arithmetic}
+\date{\date}
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\begin{tabularx}{\textwidth}{ |X|X|X| }
+1. 954 x 522 = &  2. 183 x 517 = &  3. 834 x 980 =  \\
+4. 161 x 355 = &  5. 116 x 873 = &  6. 913 x 358 =  \\
+7. 273 x 686 = &  8. 182 x 789 = &  9. 420 x 297 =  \\
+10. 153 x 137 = &  11. 131 x 307 = &  12. 657 x 828 =  \\
+13. 517 x 779 = &  14. 710 x 252 = &  15. 803 x 947 =  \\
+16. 694 x 859 = &  17. 285 x 165 = &  18. 245 x 465 =  \\
+19. 350 x 271 = &  20. 750 x 640 = &  21. 222 x 756 =  \\
+22. 899 x 357 = &  23. 491 x 627 = &  24. 476 x 863 =  \\
+25. 823 x 966 = &  26. 935 x 183 = &  27. 918 x 714 =  \\
+28. 567 x 195 = &  29. 404 x 785 = &  30. 692 x 227 =  \\
+31. 421 x 441 = &  32. 396 x 166 = &  33. 644 x 626 =  \\
+34. 388 x 898 = &  35. 202 x 938 = &  36. 252 x 580 =  \\
+37. 613 x 558 = &  38. 490 x 488 = &  39. 329 x 379 =  \\
+40. 945 x 246 = &  41. 816 x 179 = &  42. 644 x 222 =  \\
+43. 173 x 292 = &  44. 745 x 832 = &  45. 888 x 104 =  \\
+46. 220 x 297 = &  47. 755 x 319 = &  48. 769 x 292 =  \\
+49. 341 x 872 = &  50. 489 x 578 = &  51. 613 x 712 =  \\
+52. 736 x 657 = &  53. 497 x 927 = &  54. 704 x 420 =  \\
+55. 226 x 169 = &  56. 519 x 691 = &  57. 208 x 424 =  \\
+58. 509 x 396 = &  59. 158 x 154 = &  60. 681 x 624 =  \\
+61. 166 x 318 = &  62. 696 x 643 = &  63. 634 x 965 =  \\
+64. 470 x 618 = &  65. 817 x 610 = &  66. 712 x 264 =  \\
+\end{tabularx}
+\begin{tabularx}{\textwidth}{ |X|X|X| }
+1. 954 x 522 = 497988  &  2. 183 x 517 = 94611  &  3. 834 x 980 = 817320  \\
+4. 161 x 355 = 57155  &  5. 116 x 873 = 101268  &  6. 913 x 358 = 326854  \\
+7. 273 x 686 = 187278  &  8. 182 x 789 = 143598  &  9. 420 x 297 = 124740  \\
+10. 153 x 137 = 20961  &  11. 131 x 307 = 40217  &  12. 657 x 828 = 543996  \\
+13. 517 x 779 = 402743  &  14. 710 x 252 = 178920  &  15. 803 x 947 = 760441  \\
+16. 694 x 859 = 596146  &  17. 285 x 165 = 47025  &  18. 245 x 465 = 113925  \\
+19. 350 x 271 = 94850  &  20. 750 x 640 = 480000  &  21. 222 x 756 = 167832  \\
+22. 899 x 357 = 320943  &  23. 491 x 627 = 307857  &  24. 476 x 863 = 410788  \\
+25. 823 x 966 = 795018  &  26. 935 x 183 = 171105  &  27. 918 x 714 = 655452  \\
+28. 567 x 195 = 110565  &  29. 404 x 785 = 317140  &  30. 692 x 227 = 157084  \\
+31. 421 x 441 = 185661  &  32. 396 x 166 = 65736  &  33. 644 x 626 = 403144  \\
+34. 388 x 898 = 348424  &  35. 202 x 938 = 189476  &  36. 252 x 580 = 146160  \\
+37. 613 x 558 = 342054  &  38. 490 x 488 = 239120  &  39. 329 x 379 = 124691  \\
+40. 945 x 246 = 232470  &  41. 816 x 179 = 146064  &  42. 644 x 222 = 142968  \\
+43. 173 x 292 = 50516  &  44. 745 x 832 = 619840  &  45. 888 x 104 = 92352  \\
+46. 220 x 297 = 65340  &  47. 755 x 319 = 240845  &  48. 769 x 292 = 224548  \\
+49. 341 x 872 = 297352  &  50. 489 x 578 = 282642  &  51. 613 x 712 = 436456  \\
+52. 736 x 657 = 483552  &  53. 497 x 927 = 460719  &  54. 704 x 420 = 295680  \\
+55. 226 x 169 = 38194  &  56. 519 x 691 = 358629  &  57. 208 x 424 = 88192  \\
+58. 509 x 396 = 201564  &  59. 158 x 154 = 24332  &  60. 681 x 624 = 424944  \\
+61. 166 x 318 = 52788  &  62. 696 x 643 = 447528  &  63. 634 x 965 = 611810  \\
+64. 470 x 618 = 290460  &  65. 817 x 610 = 498370  &  66. 712 x 264 = 187968  \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+
+
+
+\end{document}
